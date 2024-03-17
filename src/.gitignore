@@ -1,0 +1,30 @@
+# Arquivos de compilação
+target/
+
+# Arquivos de configuração do ambiente local
+application.properties
+
+# Arquivos de IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Logs
+logs/
+
+# Arquivos de compilação Java
+*.class
+
+# Arquivos de bytecode Java
+*.jar
+*.war
+
+# Arquivos de dependências Maven
+# Especificamente para Maven, os arquivos .mvn/wrapper/maven-wrapper.jar e .mvn/wrapper/maven-wrapper.properties
+.mvn/
+mvnw
+mvnw.cmd
+
+# Pastas ocultas
+.*
