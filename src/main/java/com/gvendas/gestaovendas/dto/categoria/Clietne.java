@@ -2,7 +2,7 @@ package com.gvendas.gestaovendas.dto.categoria;
 
 import com.gvendas.gestaovendas.entidades.Categoria;
 
-public class CategoriaResponseDTO {
+public class Clietne {
 
     private Long codigo;
     private String nome;
@@ -10,15 +10,15 @@ public class CategoriaResponseDTO {
     // construtor
 
 
-    public CategoriaResponseDTO(Long codigo, String nome) {
+    public Clietne(Long codigo, String nome) {
         this.codigo = codigo;
         this.nome = nome;
     }
 
     // objeto método
 
-    public static CategoriaResponseDTO converterParaDTO(Categoria categoria){
-        return new CategoriaResponseDTO(categoria.getCodigo(), categoria.getNome());
+    public static Clietne converterParaDTO(Categoria categoria){
+        return new Clietne(categoria.getCodigo(), categoria.getNome());
     }
 
 

@@ -1,7 +1,7 @@
 package com.gvendas.gestaovendas.controlador;
 
 import com.gvendas.gestaovendas.dto.categoria.CategoriaRequestDTO;
-import com.gvendas.gestaovendas.dto.categoria.CategoriaResponseDTO;
+import com.gvendas.gestaovendas.dto.categoria.Clietne;
 import com.gvendas.gestaovendas.entidades.Categoria;
 import com.gvendas.gestaovendas.servico.CategoriaServico;
 import jakarta.validation.Valid;
@@ -22,28 +22,28 @@ public class CategoriaControlador {
     private CategoriaServico categoriaServico;
 
     @GetMapping
-    public List<CategoriaResponseDTO> listarTodas(){
+    public List<Clietne> listarTodas(){
         return categoriaServico.listarTodas().stream()
-                .map(categoria -> CategoriaResponseDTO.converterParaDTO(categoria))
+                .map(categoria -> Clietne.converterParaDTO(categoria))
                 .collect(Collectors.toList());
     }
 
    @GetMapping("/{codigo}")
-    public ResponseEntity<CategoriaResponseDTO> buscarPorCodigo(@PathVariable Long codigo){
+    public ResponseEntity<Clietne> buscarPorCodigo(@PathVariable Long codigo){
        Optional<Categoria> categoria = categoriaServico.buscaPorCodigo(codigo);
-       return categoria.isPresent() ? ResponseEntity.ok(CategoriaResponseDTO.converterParaDTO(categoria.get()))
+       return categoria.isPresent() ? ResponseEntity.ok(Clietne.converterParaDTO(categoria.get()))
                : ResponseEntity.notFound().build();}
     @PostMapping
-    public ResponseEntity<CategoriaResponseDTO>salvarCategoria(@Valid @RequestBody CategoriaRequestDTO categoriaDto){
+    public ResponseEntity<Clietne>salvarCategoria(@Valid @RequestBody CategoriaRequestDTO categoriaDto){
         Categoria categoriaSalva = categoriaServico.salvarCategoria(categoriaDto.converterParaEntidade());
-        return ResponseEntity.status(HttpStatus.CREATED).body(CategoriaResponseDTO.converterParaDTO(categoriaSalva));
+        return ResponseEntity.status(HttpStatus.CREATED).body(Clietne.converterParaDTO(categoriaSalva));
     }
     @PutMapping("/{codigo}")
-    public ResponseEntity<CategoriaResponseDTO>atualizarCategoria(@Valid @PathVariable Long codigo,
-                                                       @RequestBody CategoriaRequestDTO categoriaDTO){
+    public ResponseEntity<Clietne>atualizarCategoria(@Valid @PathVariable Long codigo,
+                                                     @RequestBody CategoriaRequestDTO categoriaDTO){
         Categoria categoriaAtualizada = categoriaServico.atualizarCategoria(codigo,
                 categoriaDTO.converterParaEntidade(codigo));
-        return ResponseEntity.ok(CategoriaResponseDTO.converterParaDTO(categoriaAtualizada));
+        return ResponseEntity.ok(Clietne.converterParaDTO(categoriaAtualizada));
 
     }
 
