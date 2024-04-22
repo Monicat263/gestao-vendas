@@ -1,55 +1,41 @@
-package com.gvendas.gestaovendas.entidades;
+package com.gvendas.gestaovendas.dto.cliente;
 
-import jakarta.persistence.*;
+import com.gvendas.gestaovendas.entidades.Cliente;
 
-import java.util.Objects;
+public class ClienteResponseDTO {
 
-@Entity
-@Table(name ="cliente")
-public class Cliente {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "codigo")
     private Long codigo;
 
-    @Column(name = "nome")
     private String nome;
 
-    @Column(name ="telefone")
     private String telefone;
 
-    @Column(name ="ativo")
     private Boolean ativo;
 
-
-    @Column(name = "logradouro")
     private String logradouro;
 
-    @Column(name = "numero")
+
     private Integer numero;
 
-    @Column(name = "complemento")
     private String complemento;
 
-    @Column(name = "bairro")
+
     private String bairro;
 
-    @Column(name = "cep")
+
     private String cep;
 
-    @Column(name = "cidade")
+
     private String cidade;
 
-    @Column(name = "estado")
+
     private String estado;
 
-    public Cliente() {
-
-    }
-
-    public Cliente( String nome, String telefone, Boolean ativo, String logradouro,
-                   Integer numero, String complemento, String bairro, String cep, String cidade, String estado) {
+    public ClienteResponseDTO(Long codigo, String nome, String telefone, Boolean ativo, String logradouro,
+                              Integer numero,String complemento, String bairro, String cep,
+                              String cidade, String estado) {
+        this.codigo = codigo;
         this.nome = nome;
         this.telefone = telefone;
         this.ativo = ativo;
@@ -60,6 +46,13 @@ public class Cliente {
         this.cep = cep;
         this.cidade = cidade;
         this.estado = estado;
+    }
+
+    public static ClienteResponseDTO converterParaClienteDTO(Cliente cliente){
+            return new ClienteResponseDTO(cliente.getCodigo(), cliente.getNome(), cliente.getTelefone(),
+                    cliente.getAtivo(), cliente.getLogradouro(),cliente.getNumero(),cliente.getComplemento(),
+                    cliente.getBairro(),cliente.getCep(),cliente.getCidade(),cliente.getEstado());
+
     }
 
     public Long getCodigo() {
@@ -148,18 +141,5 @@ public class Cliente {
 
     public void setEstado(String estado) {
         this.estado = estado;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Cliente cliente = (Cliente) o;
-        return Objects.equals(codigo, cliente.codigo) && Objects.equals(nome, cliente.nome) && Objects.equals(telefone, cliente.telefone) && Objects.equals(ativo, cliente.ativo) && Objects.equals(logradouro, cliente.logradouro) && Objects.equals(numero, cliente.numero) && Objects.equals(complemento, cliente.complemento) && Objects.equals(bairro, cliente.bairro) && Objects.equals(cep, cliente.cep) && Objects.equals(cidade, cliente.cidade) && Objects.equals(estado, cliente.estado);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(codigo, nome, telefone, ativo, logradouro, numero, complemento, bairro, cep, cidade, estado);
     }
 }

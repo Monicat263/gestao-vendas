@@ -23,8 +23,9 @@ public class GestaoVendasTratamentoExcecao extends ResponseEntityExceptionHandle
 
     public static final String CONTANT_VALIDATION_NOT_BLANK = "NotBlank";
     public static final String CONTANT_VALIDATION_NOT_NULL = "NotNull";
-
     public static final String CONTANT_VALIDATION_LENGTH = "Length";
+    public static final String CONTANT_VALIDATION_PATTERN = "Pattern";
+
 
 
     @Override
@@ -82,6 +83,8 @@ public class GestaoVendasTratamentoExcecao extends ResponseEntityExceptionHandle
         if(fildError.getCode().equals(CONTANT_VALIDATION_LENGTH)){
             return fildError.getDefaultMessage().concat(String.format(" deve ter entre %s e %s caracteres.",
                     fildError.getArguments()[2],fildError.getArguments()[1]));
+        } if(fildError.getCode().equals(CONTANT_VALIDATION_PATTERN)){
+            return fildError.getDefaultMessage().concat(" formado inválido.");
         }
         return fildError.toString();
 

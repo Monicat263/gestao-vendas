@@ -2,25 +2,23 @@ package com.gvendas.gestaovendas.dto.categoria;
 
 import com.gvendas.gestaovendas.entidades.Categoria;
 
-public class Clietne {
+public class CategoriaResponseDTO {
 
     private Long codigo;
+
     private String nome;
 
-    // construtor
-
-
-    public Clietne(Long codigo, String nome) {
+    public CategoriaResponseDTO(Long codigo, String nome) {
         this.codigo = codigo;
         this.nome = nome;
     }
-
-    // objeto método
-
-    public static Clietne converterParaDTO(Categoria categoria){
-        return new Clietne(categoria.getCodigo(), categoria.getNome());
+    public static CategoriaResponseDTO converterParaCategoriaDTO(Categoria categoria){
+        return new CategoriaResponseDTO( categoria.getCodigo(), categoria.getNome());
     }
 
+    public CategoriaResponseDTO() {
+
+    }
 
     public Long getCodigo() {
         return codigo;

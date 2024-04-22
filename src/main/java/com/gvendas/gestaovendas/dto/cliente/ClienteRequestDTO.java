@@ -1,55 +1,45 @@
-package com.gvendas.gestaovendas.entidades;
+package com.gvendas.gestaovendas.dto.cliente;
 
-import jakarta.persistence.*;
+import com.gvendas.gestaovendas.entidades.Cliente;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import org.hibernate.validator.constraints.Length;
 
-import java.util.Objects;
+public class ClienteRequestDTO {
 
-@Entity
-@Table(name ="cliente")
-public class Cliente {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "codigo")
-    private Long codigo;
-
-    @Column(name = "nome")
+    @NotBlank(message = "Nome")
+    @Length(min = 3, max =50, message = "Nome")
     private String nome;
-
-    @Column(name ="telefone")
+    @NotBlank(message = "Telefone")
+    @Pattern(regexp = "\\([\\d]{2}\\)[\\d]{5}[- .][\\d]{4}",message = "Telefone")
     private String telefone;
-
-    @Column(name ="ativo")
+    @NotNull(message = "Ativo")
     private Boolean ativo;
-
-
-    @Column(name = "logradouro")
+    @NotBlank(message = "Logradouro")
+    @Length(min = 3, max = 30, message = "Logradouro")
     private String logradouro;
 
-    @Column(name = "numero")
+    @NotNull(message = "Numero")
     private Integer numero;
-
-    @Column(name = "complemento")
+    @Length( max = 30, message = "Complemento")
     private String complemento;
 
-    @Column(name = "bairro")
+    @NotBlank(message = "Bairro")
+    @Length(min = 3, max = 30, message = "Bairro")
     private String bairro;
-
-    @Column(name = "cep")
+    @NotBlank(message = "Cep")
+    @Pattern(regexp = "[\\d]{5}-[\\d]{3}",message = "Cep")
     private String cep;
-
-    @Column(name = "cidade")
+    @NotBlank(message = "Cidade")
+    @Length(min = 3, max = 30, message = "Cidade")
     private String cidade;
-
-    @Column(name = "estado")
+    @NotBlank(message = "Estado")
+    @Length( max = 2, message = "Estado")
     private String estado;
 
-    public Cliente() {
-
-    }
-
-    public Cliente( String nome, String telefone, Boolean ativo, String logradouro,
-                   Integer numero, String complemento, String bairro, String cep, String cidade, String estado) {
+    public ClienteRequestDTO(String nome, String telefone, Boolean ativo, String logradouro, Integer numero,
+                             String complemento, String bairro, String cep, String cidade, String estado) {
         this.nome = nome;
         this.telefone = telefone;
         this.ativo = ativo;
@@ -62,12 +52,8 @@ public class Cliente {
         this.estado = estado;
     }
 
-    public Long getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(Long codigo) {
-        this.codigo = codigo;
+    public Cliente converterParaEntidade(){
+        return new Cliente(nome,telefone,ativo,logradouro,numero,complemento,bairro,cep,cidade,estado);
     }
 
     public String getNome() {
@@ -150,16 +136,4 @@ public class Cliente {
         this.estado = estado;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Cliente cliente = (Cliente) o;
-        return Objects.equals(codigo, cliente.codigo) && Objects.equals(nome, cliente.nome) && Objects.equals(telefone, cliente.telefone) && Objects.equals(ativo, cliente.ativo) && Objects.equals(logradouro, cliente.logradouro) && Objects.equals(numero, cliente.numero) && Objects.equals(complemento, cliente.complemento) && Objects.equals(bairro, cliente.bairro) && Objects.equals(cep, cliente.cep) && Objects.equals(cidade, cliente.cidade) && Objects.equals(estado, cliente.estado);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(codigo, nome, telefone, ativo, logradouro, numero, complemento, bairro, cep, cidade, estado);
-    }
 }

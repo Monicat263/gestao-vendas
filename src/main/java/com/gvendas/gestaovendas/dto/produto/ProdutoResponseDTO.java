@@ -1,6 +1,6 @@
 package com.gvendas.gestaovendas.dto.produto;
 
-import com.gvendas.gestaovendas.dto.categoria.Clietne;
+import com.gvendas.gestaovendas.dto.categoria.CategoriaResponseDTO;
 import com.gvendas.gestaovendas.entidades.Produto;
 
 import java.math.BigDecimal;
@@ -19,10 +19,10 @@ public class ProdutoResponseDTO {
 
     private String observacao;
 
-    private Clietne categoria;
+    private CategoriaResponseDTO categoria;
 
     public ProdutoResponseDTO(Long codigo, String descricao, Integer quantidade, BigDecimal precoCusto,
-                              BigDecimal precoVenda, String observacao, Clietne categoria) {
+                              BigDecimal precoVenda, String observacao, CategoriaResponseDTO  categoria) {
         this.codigo = codigo;
         this.descricao = descricao;
         this.quantidade = quantidade;
@@ -37,7 +37,7 @@ public class ProdutoResponseDTO {
     public static ProdutoResponseDTO converterParaProdutoDTO(Produto produto){
         return new ProdutoResponseDTO(produto.getCodigo(),produto.getDescricao(),produto.getQuantidade(),
                 produto.getPrecoCusto(),produto.getPrecoVenda(),produto.getObservacao(),
-                Clietne.converterParaDTO(produto.getCategoria()));
+                CategoriaResponseDTO.converterParaCategoriaDTO(produto.getCategoria()));
     }
 
     public Long getCodigo() {
@@ -88,11 +88,11 @@ public class ProdutoResponseDTO {
         this.observacao = observacao;
     }
 
-    public Clietne getCategoria() {
+    public CategoriaResponseDTO getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(Clietne categoria) {
+    public void setCategoria(CategoriaResponseDTO categoria) {
         this.categoria = categoria;
     }
 }
