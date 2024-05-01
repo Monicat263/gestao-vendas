@@ -47,7 +47,7 @@ public class Cliente {
     public Cliente() {
 
     }
-
+    // Construtor sem pasasr código
     public Cliente( String nome, String telefone, Boolean ativo, String logradouro,
                    Integer numero, String complemento, String bairro, String cep, String cidade, String estado) {
         this.nome = nome;
@@ -60,6 +60,21 @@ public class Cliente {
         this.cep = cep;
         this.cidade = cidade;
         this.estado = estado;
+    }
+     // Construtor passando código
+    public Cliente( Long codigo, String nome, String telefone, Boolean ativo, String logradouro,
+                    Integer numero, String complemento, String bairro, String cep, String cidade, String estado) {
+        this.nome = nome;
+        this.telefone = telefone;
+        this.ativo = ativo;
+        this.logradouro = logradouro;
+        this.numero = numero;
+        this.complemento = complemento;
+        this.bairro = bairro;
+        this.cep = cep;
+        this.cidade = cidade;
+        this.estado = estado;
+        this.codigo = codigo;
     }
 
     public Long getCodigo() {

@@ -52,6 +52,8 @@ public class CategoriaServico {
         }
 
     }
+
+
     private void validarCategoriaDuplicada(Categoria categoria){
        Categoria categoriaEncontrada = categoriaRepositorio.findByNome(categoria.getNome());
         if (categoriaEncontrada != null && !categoriaEncontrada.getCodigo().equals(categoria.getCodigo()))

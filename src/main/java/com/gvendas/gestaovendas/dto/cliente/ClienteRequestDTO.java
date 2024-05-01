@@ -56,6 +56,10 @@ public class ClienteRequestDTO {
         return new Cliente(nome,telefone,ativo,logradouro,numero,complemento,bairro,cep,cidade,estado);
     }
 
+    public Cliente converterParaEntidade(Long codigo){
+        return new Cliente(codigo,nome,telefone,ativo,logradouro,numero,complemento,bairro,cep,cidade,estado);
+    }
+
     public String getNome() {
         return nome;
     }
