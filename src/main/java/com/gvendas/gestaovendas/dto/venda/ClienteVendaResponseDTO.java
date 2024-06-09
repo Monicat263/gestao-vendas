@@ -5,11 +5,11 @@ import java.util.List;
 public class ClienteVendaResponseDTO {
 
     private String nome;
-    private List<ClienteVendaResponseDTO> vendaResponseDTOS;
+    private List<VendaResponseDTO> vendaResponseDTOs;
 
-    public ClienteVendaResponseDTO(String nome, List<ClienteVendaResponseDTO> vendaResponseDTOS) {
+    public ClienteVendaResponseDTO(String nome, List<VendaResponseDTO> vendaResponseDTOs ) {
         this.nome = nome;
-        this.vendaResponseDTOS = vendaResponseDTOS;
+        this.vendaResponseDTOs = vendaResponseDTOs;
     }
 
     public String getNome() {
@@ -20,11 +20,11 @@ public class ClienteVendaResponseDTO {
         this.nome = nome;
     }
 
-    public List<ClienteVendaResponseDTO> getVendaResponseDTOS() {
-        return vendaResponseDTOS;
+    public List<VendaResponseDTO> getVendaResponseDTOs() {
+        return vendaResponseDTOs;
     }
 
-    public void setVendaResponseDTOS(List<ClienteVendaResponseDTO> vendaResponseDTOS) {
-        this.vendaResponseDTOS = vendaResponseDTOS;
+    public void setVendaResponseDTOs(List<VendaResponseDTO> vendaResponseDTOs) {
+        this.vendaResponseDTOs = vendaResponseDTOs;
     }
 }
