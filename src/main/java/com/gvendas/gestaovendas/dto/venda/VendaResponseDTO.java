@@ -17,6 +17,7 @@ public class VendaResponseDTO {
         this.itemVendaResponseDTOS = itemVendaResponseDTOS;
     }
 
+
     public Long getCodigo() {
         return codigo;
     }

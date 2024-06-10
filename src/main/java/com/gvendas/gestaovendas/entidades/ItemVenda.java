@@ -14,8 +14,8 @@ public class ItemVenda {
     @Column(name = "codigo")
     private Long codigo;
 
-    @Column(name = "quatidade")
-    private Integer quantide;
+    @Column(name = "quantidade")
+    private Integer quantidade;
 
     @Column(name = "preco_vendido")
     private BigDecimal precoVendido;
@@ -36,12 +36,12 @@ public class ItemVenda {
         this.codigo = codigo;
     }
 
-    public Integer getQuantide() {
-        return quantide;
+    public Integer getQuantidade() {
+        return quantidade;
     }
 
-    public void setQuantide(Integer quantide) {
-        this.quantide = quantide;
+    public void setQuantidade(Integer quantidade) {
+        this.quantidade = quantidade;
     }
 
     public BigDecimal getPrecoVendido() {
@@ -73,11 +73,11 @@ public class ItemVenda {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ItemVenda itemVenda = (ItemVenda) o;
-        return Objects.equals(codigo, itemVenda.codigo) && Objects.equals(quantide, itemVenda.quantide) && Objects.equals(precoVendido, itemVenda.precoVendido) && Objects.equals(produto, itemVenda.produto) && Objects.equals(venda, itemVenda.venda);
+        return Objects.equals(codigo, itemVenda.codigo) && Objects.equals(quantidade, itemVenda.quantidade) && Objects.equals(precoVendido, itemVenda.precoVendido) && Objects.equals(produto, itemVenda.produto) && Objects.equals(venda, itemVenda.venda);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(codigo, quantide, precoVendido, produto, venda);
+        return Objects.hash(codigo, quantidade, precoVendido, produto, venda);
     }
 }
